@@ -40,7 +40,7 @@ gulp.task('cssnano', function () {
         .pipe(rename({
             suffix: '-min'
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('views/dist'));
 });
 
 // Scripts Task
@@ -54,7 +54,7 @@ gulp.task('scripts', function () {
             },
             noSource: ['main.js'],
         }))
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('views/dist'))
 });
 
 // Image Task
