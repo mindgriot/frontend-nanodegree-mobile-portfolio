@@ -15,6 +15,7 @@ var responsive = require('gulp-responsive');
 var stylus = require('gulp-stylus');
 var poststylus = require('poststylus');
 var rupture = require('rupture');
+var imagemin = require('gulp-imagemin');
 var $ = require('gulp-load-plugins')();
 
 // CSS Task
@@ -57,15 +58,26 @@ gulp.task('scripts', function () {
 		.pipe(gulp.dest('views/dist'))
 });
 
-// Image Task
-// Compress (Desktop 2x-1600px; 1x-800px; 50em)
-// gulp.task('image', function () {
-//     return gulp.src('img/*.{jpg,png}')
-//       .pipe($.responsive({
+// Image Compress
+gulp.task('compress', function () {
+    return gulp.src('views/images/**/*.png')
+        .pipe(plumber())
+        .pipe(imagemin())
+        .pipe(rename({
+            suffix: '-min'
+        }))
+        .pipe(gulp.dest('views/dist/images'));
+});
+
+// Image Responsive
+// Resize and Compress (Desktop 2x-1600px; 1x-800px; 50em)('img/*.{jpg,png}')
+gulp.task('responsive', function () {
+    return gulp.src('views/images/**/*.jpg')
+      .pipe($.responsive({
 //         // Resize all JPG images to three different sizes: 200, 500, and 630 pixels
-//         '**/*.jpg': [{
-//           width: 340,
-//           rename: { suffix: '-340px' },
+        '**/*.jpg': [{
+          width: 1920,
+          rename: { suffix: '-min' },
 //         }, {
 //           width: 250,
 //           rename: { suffix: '-250px' },
@@ -82,22 +94,22 @@ gulp.task('scripts', function () {
 //         // }, {
 //         //   width: 50 * 2,
 //         //   rename: { suffix: '@2x' },
-//         // }],
-//       }, {
+        }],
+        }, {
 //         // Global configuration for all images
 //         // The output quality for JPEG, WebP and TIFF output formats
 //         quality: 85,
 //         // Use progressive (interlace) scan for JPEG and PNG output
 //         progressive: true,
 //         // Strip all metadata
-//         withMetadata: false,
-//         compressionLeverl: 7,
-//         skipOnEnlargement: true,
-//         // Do not emit the error when image is enlarged.
-//         errorOnEnlargement: false,
-//       }))
-//       .pipe(gulp.dest('dist'));
-// });
+        withMetadata: false,
+        compressionLeverl: 7,
+        skipOnEnlargement: true,
+        // Do not emit the error when image is enlarged.
+        errorOnEnlargement: false,
+      }))
+      .pipe(gulp.dest('views/dist/images'));
+});
 
 //Watch Task
 //Watches JS
