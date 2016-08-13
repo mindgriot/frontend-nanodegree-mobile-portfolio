@@ -1,7 +1,5 @@
 CACHE MANIFEST
-#2016-13-08
 
-CACHE:
 pizza.html
 dist/main-min.js
 dist/style-min.css
