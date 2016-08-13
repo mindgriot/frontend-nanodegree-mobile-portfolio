@@ -1,0 +1,10 @@
+CACHE MANIFEST
+#2016-13-08
+
+CACHE:
+views/pizza.html
+views/dist/main-min.js
+views/dist/style-min.css
+views/dist/bootstrap-grid-min.css
+views/dist/images/pizza-min.png
+views/dist/images/pizzeria-min.jpg
