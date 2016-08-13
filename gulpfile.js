@@ -55,7 +55,7 @@ gulp.task('scripts', function () {
             },
             noSource: ['main.js'],
         }))
-		.pipe(gulp.dest('views/dist'))
+		.pipe(gulp.dest('views/dist'));
 });
 
 // Image Compress
