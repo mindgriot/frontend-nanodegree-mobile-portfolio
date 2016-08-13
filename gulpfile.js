@@ -72,11 +72,11 @@ gulp.task('compress', function () {
 // Image Responsive
 // Resize and Compress (Desktop 2x-1600px; 1x-800px; 50em)('img/*.{jpg,png}')
 gulp.task('responsive', function () {
-    return gulp.src('views/images/**/*.jpg')
+    return gulp.src('views/images/**/*.png')
       .pipe($.responsive({
 //         // Resize all JPG images to three different sizes: 200, 500, and 630 pixels
-        '**/*.jpg': [{
-          width: 2048,
+        '**/*.png': [{
+          width: 100,
           rename: { suffix: '-min' },
 //         }, {
 //           width: 250,
