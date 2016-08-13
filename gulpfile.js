@@ -76,7 +76,7 @@ gulp.task('responsive', function () {
       .pipe($.responsive({
 //         // Resize all JPG images to three different sizes: 200, 500, and 630 pixels
         '**/*.png': [{
-          width: 100,
+          width: 200,
           rename: { suffix: '-min' },
 //         }, {
 //           width: 250,
