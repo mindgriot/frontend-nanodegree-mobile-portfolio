@@ -72,11 +72,11 @@ gulp.task('compress', function () {
 // Image Responsive
 // Resize and Compress (Desktop 2x-1600px; 1x-800px; 50em)('img/*.{jpg,png}')
 gulp.task('responsive', function () {
-    return gulp.src('views/images/**/*.png')
+    return gulp.src('views/images/**/*.jpg')
       .pipe($.responsive({
 //         // Resize all JPG images to three different sizes: 200, 500, and 630 pixels
-        '**/*.png': [{
-          width: 200,
+        '**/*.jpg': [{
+          width: 250,
           rename: { suffix: '-min' },
 //         }, {
 //           width: 250,
@@ -103,7 +103,7 @@ gulp.task('responsive', function () {
 //         progressive: true,
 //         // Strip all metadata
         withMetadata: false,
-        compressionLeverl: 7,
+        compressionLeverl: 8,
         skipOnEnlargement: true,
         // Do not emit the error when image is enlarged.
         errorOnEnlargement: false,
