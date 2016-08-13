@@ -512,7 +512,7 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
-// Generates the sliding pizzas when the page loads.
+// Generates the sliding pizzas when the page loads. i represents the number of moving pizzas that will populate the -1 z-index layer.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;

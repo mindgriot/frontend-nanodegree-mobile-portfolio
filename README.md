@@ -1,55 +1,43 @@
 ## Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+I have accepted the challenge to optimize [Cam's Pizzeria](https://mindgriot.github.io/phil-website-optimization/views/pizza.html "https://mindgriot.github.io/phil-website-optimization/views/pizza.html") online site! [Cam's Pizzeria](https://mindgriot.github.io/phil-website-optimization/views/pizza.html "https://mindgriot.github.io/phil-website-optimization/views/pizza.html") online site is hosted through my [GitHub](https://github.com/mindgriot "https://github.com/mindgriot") personal page. The critical rendering path has been improved, and now receives Google [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fmindgriot.github.io%2Fphil-website-optimization%2Fviews%2Fpizza.html&tab=mobile "PageSpeed Insights") scores of 97 and 98 for Mobile and Desktop platforms respectively, as of August 13, 2016. The browser used to develop and test the aforementioned results was [Google Chrome - Canary](https://www.google.com/chrome/browser/canary.html "https://www.google.com/chrome/browser/canary.html") Version 54.0.2828.0 canary (64-bit).
 
-To get started, check out the repository and inspect the code.
+To review the files used for development, check out my [repository](https://github.com/mindgriot/phil-website-optimization "https://github.com/mindgriot/phil-website-optimization"), which is a [fork](https://github.com/udacity/frontend-nanodegree-mobile-portfolio "https://github.com/udacity/frontend-nanodegree-mobile-portfolio") from the [Udacity](https://www.udacity.com/ "https://www.udacity.com/") GitHub repo; and, inspect the code.
 
-### Getting started
+### Development Tools Used
+1. [Atom](https://atom.io/ "https://atom.io/") version 1.9.8
+2. [Google Chrome - Canary](https://www.google.com/chrome/browser/canary.html "https://www.google.com/chrome/browser/canary.html") Version 54.0.2828.0 canary (64-bit)
+3. [npm](https://www.npmjs.com/ "https://www.npmjs.com/")
+4. [nodejs](https://nodejs.org/en/ "https://nodejs.org/en/")
+5. [gulpjs](http://gulpjs.com/ "http://gulpjs.com/")
+6. [gulp plugins](http://gulpjs.com/plugins/ "http://gulpjs.com/plugins/")
+7. [GitHub Desktop](https://desktop.github.com/ "https://desktop.github.com/")
+8. MacBook Pro OSX 10.11.6
 
-####Part 1: Optimize PageSpeed Insights score for index.html
-
-Some useful tips to help you get started:
-
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
+  * The gulpfile.js file used for pre/post processing is located in the root directory of my [repository](https://github.com/mindgriot/phil-website-optimization "https://github.com/mindgriot/phil-website-optimization"). To use the pre/post processes I used install the following gulpjs plugins:
 
   ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
+  $> sudo npm install --save-dev gulp gulp gulp-minify lost axis postcss-cssnext gulp-cssnano gulp-plumber gulp-concat browser-sync autoprefixer gulp-sourcemaps gulp-responsive gulp-stylus poststylus rupture gulp-load-plugins gulp-rename gulp-imagemin
+  ```
+  * run the gulp command to start the server and run default gulp scripts, or run individuals scripts by themselves:
+
+  ```bash
+  $> gulp
+  or
+  $> gulp 'script name'
   ```
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to the top-level of your project directory to make your local server accessible remotely.
 
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ./ngrok http 8080
-  ```
+### Performance Optimization Processes
+The src files of this project are located in the "views" directory at the root of my [repository](https://github.com/mindgriot/phil-website-optimization "https://github.com/mindgriot/phil-website-optimization"). The dist files are located in a directory called "dist" within the "views" directory. And pizza.html is  located at the root of the "views" directory.
 
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
+The "dist" directory consists of the minified/compressed production files for the final [Cam's Pizzeria](https://mindgriot.github.io/phil-website-optimization/views/pizza.html "https://mindgriot.github.io/phil-website-optimization/views/pizza.html") online site.
 
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
-
-####Part 2: Optimize Frames per Second in pizza.html
-
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
-
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
-
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
-
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
+1. I removed inline css styles from pizza.html to help reduce css render blocking, while also adding width and height dimensions to img tags to help the browser know the size of the element that would be placed in the img location.
+2. I compressed and scaled the images of the site.
+3. I compressed the js file used in the site.
+4. I compressed the css file used in the site. And ran an audit within Google Chrome's developer tools to determine which css styles were not being used on the site. From this audit, I extracted the css styles the site used from the bootstrap-grid.css file and merged them into the style.css file, so the browser would not have to make two requests from two css files to render one page.
+5. I refactored the function changePizzaSizes(size) located at line 425 of views/js/main.js to eliminate redundant and non-critical code (from a Cameron Pittman video/quiz).
+6. I refactored the document.addEventListener('DOMContentLoaded', function() located at line 516 of views/js/main.js by reducing the number over pizzas animated from 200 to 23. All 200 pizzas were not being produced on the screen and this was producing unnecessary function calls and scripting.
+7. I replace all document.queryselectorall calls with document.getElementsByClassName. And nested document.getElementsByClassName within document.getElementById, in one case, call the class calls could be more focused. This helps to reduce the time involved to update elements because only the specific classes are being queried, not the entire pizza.html document.
+8. I researched and found a way to help reduce css from blocking render with the asynchronous "preload" [markup](https://github.com/filamentgroup/loadCSS/blob/master/README.md "https://github.com/filamentgroup/loadCSS/blob/master/README.md"), [example page](https://filamentgroup.github.io/loadCSS/test/preload.html "https://filamentgroup.github.io/loadCSS/test/preload.html").
