@@ -18,7 +18,7 @@ input {
 form {
     display: inline-block;
 }
-.centered {
+.centered, .col-md-8{
     text-align: center;
 }
 #pizzaSize {
