@@ -5,6 +5,5 @@ CACHE:
 pizza.html
 dist/main-min.js
 dist/style-min.css
-dist/bootstrap-grid-min.css
 dist/images/pizza-min.png
 dist/images/pizzeria-min.jpg
