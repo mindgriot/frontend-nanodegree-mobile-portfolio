@@ -28,7 +28,7 @@ form {
     position: fixed;
     width: 256px;
     z-index: -1;
-    will-change: scroll-position;
+    will-change: transform;
 }
 .randomPizzaContainer {
     float: left;
