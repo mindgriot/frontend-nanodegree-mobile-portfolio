@@ -28,7 +28,6 @@ form {
     position: fixed;
     width: 256px;
     z-index: -1;
-    will-change: transform;
 }
 .randomPizzaContainer {
     float: left;
@@ -53,7 +52,6 @@ form {
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
-    will-change: transform;
 }
 @media (min-width: 768px) {
     .container {
