@@ -490,22 +490,13 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-// added len to for loop and refactored to create local variable outside the loop so the DOM is not being reference with each iteration
+// added len to for loop and refactored to create local variable outside the loop so the DOM is not being referenced with each iteration.
   var items = document.getElementsByClassName('mover');
   var top = document.body.scrollTop / 1250;
   for (var i = 0, len = items.length, phase; i < len; i++) {
     phase = Math.sin(top + i % 5);
     console.log(phase, top);
 }
-
-  // var items = document.getElementsByClassName('mover');
-  // for (var i = 0, len = 200; i < items.length; i++) {
-  //   var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-  //   // find all pizzas affected by this function
-  //   console.log(phase, document.body.scrollTop / 1250);
-  //
-  //   items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  // }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
