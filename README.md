@@ -17,7 +17,7 @@ To review the files used for development, check out my [repository](https://gith
   * The gulpfile.js file used for pre/post processing is located in the root directory of my [repository](https://github.com/mindgriot/phil-website-optimization "https://github.com/mindgriot/phil-website-optimization"). To use the pre/post processes I used install the following gulpjs plugins:
 
   ```bash
-  $> sudo npm install --save-dev gulp gulp gulp-minify lost axis postcss-cssnext gulp-cssnano gulp-plumber gulp-concat browser-sync autoprefixer gulp-sourcemaps gulp-responsive gulp-stylus poststylus rupture gulp-load-plugins gulp-rename gulp-imagemin
+  $> sudo npm install --save-dev gulp gulp gulp-minify lost axis postcss-cssnext gulp-cssnano gulp-plumber gulp-concat browser-sync autoprefixer gulp-sourcemaps gulp-responsive gulp-stylus poststylus rupture gulp-load-plugins gulp-rename gulp-imagemin critical
   ```
   * run the gulp command to start the server and run default gulp scripts, or run individuals scripts by themselves:
 

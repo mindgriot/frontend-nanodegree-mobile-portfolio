@@ -1,3 +1,4 @@
+'use strict';
 /*
 Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
 jank-free at 60 frames per second.
@@ -406,13 +407,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -437,9 +438,9 @@ var resizePizzas = function(size) {
           console.log("bug in sizeSwitcher");
       }
 
-      // var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    // Added len to for loop
       var randomPizzas = document.getElementById("randomPizzas").getElementsByClassName("randomPizzaContainer");
-      for (var i = 0; i < randomPizzas.length; i++) {
+      for (var i = 0, len = randomPizzas.length; i < randomPizzas.length; i++) {
         randomPizzas[i].style.width = newWidth + "%";
       }
     }
@@ -456,10 +457,10 @@ var resizePizzas = function(size) {
 
 window.performance.mark("mark_start_generating"); // collect timing data
 
-// This for-loop actually creates and appends all of the pizzas when the page loads
+// This for-loop actually creates and appends all of the pizzas when the page loads. Declared the pizzasDiv variable outside the loop, so only DOM call is made.
+var pizzasDiv = document.getElementById('randomPizzas');
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
-  pizzasDiv.appendChild(pizzaElementGenerator(i));
+     pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
@@ -489,15 +490,22 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-
+// added len to for loop and refactored to create local variable outside the loop so the DOM is not being reference with each iteration
   var items = document.getElementsByClassName('mover');
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    // find all pizzas affected by this function
-    console.log(phase, document.body.scrollTop / 1250);
+  var top = document.body.scrollTop / 1250;
+  for (var i = 0, len = items.length, phase; i < len; i++) {
+    phase = Math.sin(top + i % 5);
+    console.log(phase, top);
+}
 
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  }
+  // var items = document.getElementsByClassName('mover');
+  // for (var i = 0, len = 200; i < items.length; i++) {
+  //   var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+  //   // find all pizzas affected by this function
+  //   console.log(phase, document.body.scrollTop / 1250);
+  //
+  //   items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  // }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -512,11 +520,12 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
-// Generates the sliding pizzas when the page loads. i represents the number of moving pizzas that will populate the -1 z-index layer.
+// Generates the sliding pizzas when the page loads. i represents the number of moving pizzas that will populate the -1 z-index layer. Added dynamic len in for loop. Moved DOM call outside of for loop.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 23; i++) {
+  var screenPizzas = (window.screen.height(0.007*cols));
+  for (var i = 0; i < screenPizzas.length; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "dist/images/pizza-min.png";
@@ -524,7 +533,12 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
   }
+  var movingPizzas = document.getElementById('movingPizzas1');
+    for (var i = 0; i < movingPizzas.length; i++) {
+      movingPizzas.appendChild(elem);
+  }
+
   updatePositions();
+
 });

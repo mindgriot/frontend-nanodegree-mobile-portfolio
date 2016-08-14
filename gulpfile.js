@@ -15,6 +15,7 @@ var responsive = require('gulp-responsive');
 var stylus = require('gulp-stylus');
 var poststylus = require('poststylus');
 var rupture = require('rupture');
+var critical = require('critical').stream;
 var imagemin = require('gulp-imagemin');
 var $ = require('gulp-load-plugins')();
 
@@ -130,5 +131,12 @@ gulp.task('browser-sync', function() {
     });
 });
 
+// Generate & Inline Critical-path CSS
+gulp.task('critical', function() {
+    return gulp.src('index.html')
+        .pipe(plumber())
+        .pipe(critical({base: './', inline: true, css: ['./css/style.css','./css/print.css']}))
+        .pipe(gulp.dest('dist'));
+});
 
 gulp.task('default', ['watch', 'browser-sync']);
